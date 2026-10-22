@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para la mejor trabajadora social</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap">
+<style>
+:root{--bg:#e6f1fa;--bg2:#f6e7bf;--card:#fffdf7;--ink:#243a52;--soft:#5f7488;--accent:#a8690a;--accent2:#3f78a8;--line:#cfe0ee;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14212e;--bg2:#2b2415;--card:#1e2e3f;--ink:#f3ecdc;--soft:#a9bccd;--accent:#e8b04a;--accent2:#3f78a8;--line:#34506a}}
+:root[data-theme="dark"]{--bg:#14212e;--bg2:#2b2415;--card:#1e2e3f;--ink:#f3ecdc;--soft:#a9bccd;--accent:#e8b04a;--accent2:#3f78a8;--line:#34506a}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--bg);background:linear-gradient(180deg,var(--bg) 0%,var(--bg2) 100%);color:var(--ink);font-family:"Cormorant Garamond",Georgia,"Times New Roman",serif;font-size:19px;line-height:1.6;min-height:100%;padding:24px 16px 48px}
+.wrap{max-width:520px;margin:0 auto;display:flex;flex-direction:column}
+.hero{text-align:center;padding:12px 0 20px}
+.hero .big{font-size:56px}
+h1{font-size:34px;font-weight:600;margin:8px 0;color:var(--accent);line-height:1.15}
+.sub{color:var(--soft);font-style:italic;margin:0}
+.letter{order:4;display:none;margin-top:22px;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;box-shadow:0 8px 24px rgba(63,120,168,.18)}
+.letter.show{display:block;animation:pop .5s ease}
+.letter p{margin:0 0 14px}
+.sign{text-align:right;color:var(--accent);font-style:italic;margin:0}
+h2{order:1;text-align:center;font-size:20px;margin:10px 0 6px}
+.hint{order:2;text-align:center;color:var(--soft);margin:0 0 14px;font-size:15px}
+.opts{order:3;display:grid;gap:10px}
+.opt{font:inherit;color:var(--ink);background:var(--card);border:2px solid var(--line);border-radius:14px;padding:14px 16px;text-align:left;cursor:pointer;display:flex;align-items:center;gap:12px;font-size:18px;transition:.2s}
+.opt span.e{font-size:30px}
+.opt:active{transform:scale(.98)}
+.opt.sel{border-color:var(--accent);background:var(--accent2);color:#fff}
+.opt.off{opacity:.45;cursor:not-allowed}
+.coupon{order:5;display:none;margin-top:22px;border:2px dashed var(--accent);border-radius:18px;background:var(--card);padding:22px 18px;text-align:center;animation:pop .5s ease}
+.coupon.show{display:block}
+.coupon .tag{display:inline-block;background:var(--accent);color:#fff;border-radius:999px;padding:4px 14px;font-size:13px;letter-spacing:1px;font-family:Arial,sans-serif}
+.coupon h3{margin:12px 0 4px;font-size:22px;color:var(--accent)}
+.coupon .code{font-family:"Courier New",monospace;background:var(--bg);border-radius:8px;padding:6px 10px;display:inline-block;margin-top:8px;letter-spacing:2px}
+.coupon p{margin:6px 0}
+@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
+.heart{position:fixed;top:-30px;font-size:22px;pointer-events:none;animation:fall 3s linear forwards;z-index:5}
+@keyframes fall{to{transform:translateY(110vh) rotate(40deg);opacity:.2}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="big">💐</div>
+    <h1>Para la mejor trabajadora social</h1>
+    <p class="sub">¡Feliz día! Una carta pequeña para una persona enorme</p>
+  </div>
+
+  <div class="letter" id="letter">
+    <p id="saludo"></p>
+    <p>Hoy es tu día y quiero que lo sientas con todo el corazón: eres la mejor en lo que haces. Tu profesión no es solo un trabajo, es una vocación que cambia vidas, abraza historias difíciles y devuelve esperanza donde a veces ya no la hay.</p>
+    <p>Admiro tu paciencia, tu entrega y esa forma tan tuya de escuchar. El mundo es un lugar mejor porque tú estás en él, y yo soy el más afortunado de tenerte cerca.</p>
+    <p>Y claro, también eres la mujer más hermosa, por fuera y por dentro. Gracias por ser quien eres. Hoy te toca a ti ser cuidada y consentida. 💖</p>
+    <p class="sign">Con todo mi amor,<br>tu Checho</p>
+  </div>
+
+  <h2>🎁 Tu regalo del día</h2>
+  <p class="hint">Elige tu antojo favorito y se abrirá un mensaje para ti (solo puedes elegir una opción 😉)</p>
+
+  <div class="opts">
+    <button class="opt" data-k="fresas"><span class="e">🍓</span>Fresas con crema</button>
+    <button class="opt" data-k="milhoja"><span class="e">🍰</span>Milhoja</button>
+    <button class="opt" data-k="yogurt"><span class="e">🥣</span>Goyurt</button>
+  </div>
+
+  <div class="coupon" id="coupon" aria-live="polite">
+    <span class="tag">CUPÓN VÁLIDO</span>
+    <h3 id="ctitle"></h3>
+    <p>¡Este cupón es totalmente válido! Reclámalo conmigo cuando quieras, hoy mismo si te provoca. 😍</p>
+    <p style="color:var(--soft);font-size:14px">Tip: toma una captura de pantalla y envíamela para reclamarlo.</p>
+    <span class="code" id="ccode"></span>
+  </div>
+</div>
+
+<script>
+var NOMBRE = "Mi amor"; // Cambia aquí por su nombre
+document.getElementById("saludo").textContent = NOMBRE + ",";
+var items = {
+  fresas: {t: "🍓 Un plato de fresas con crema", c: "CUPON-FRESAS-2026"},
+  milhoja: {t: "🍰 Una deliciosa milhoja", c: "CUPON-MILHOJA-2026"},
+  yogurt: {t: "🥣 Un goyurt a tu gusto", c: "CUPON-GOYURT-2026"}
+};
+function hearts(){
+  for(var i=0;i<18;i++){
+    var h=document.createElement("div");
+    h.className="heart";
+    h.textContent=["💖","💗","🌸","🍓"][i%4];
+    h.style.left=Math.random()*100+"vw";
+    h.style.animationDelay=(Math.random()*0.8)+"s";
+    document.body.appendChild(h);
+    setTimeout(function(x){return function(){x.remove()}}(h),4200);
+  }
+}
+var locked=false;
+var btns=document.querySelectorAll(".opt");
+btns.forEach(function(b){
+  b.addEventListener("click",function(){
+    if(locked){return;}
+    locked=true;
+    try{localStorage.setItem("cuponElegido",b.dataset.k)}catch(e){}
+    btns.forEach(function(x){x.classList.remove("sel");if(x!==b){x.classList.add("off")}});
+    b.classList.add("sel");
+    var it=items[b.dataset.k];
+    document.getElementById("ctitle").textContent=it.t;
+    document.getElementById("ccode").textContent=it.c;
+    var L=document.getElementById("letter");
+    L.classList.add("show");
+    var c=document.getElementById("coupon");
+    c.classList.remove("show");
+    void c.offsetWidth;
+    c.classList.add("show");
+    hearts();
+    L.scrollIntoView({behavior:"smooth",block:"start"});
+  });
+});
+try{var prev=localStorage.getItem("cuponElegido");if(prev){var pb=document.querySelector('.opt[data-k="'+prev+'"]');if(pb){pb.click();}}}catch(e){}
+</script>
+</body>
+</html>
